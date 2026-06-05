@@ -6,7 +6,7 @@ Comparative study of five architectures for short-horizon mid-price prediction o
 
 ## Overview
 
-Most prior LOB forecasting work evaluates on event-sampled data, where a new snapshot is recorded only when an order book event occurs. This concentrates observations on moments of market activity and makes the prediction task structurally easier. We re-evaluate all models under a stricter **uniform clock-time** regime (250 ms intervals), where quiet stretches are preserved and prediction horizons in seconds correspond to real clock time.
+Most prior LOB forecasting work evaluates on event-sampled data, where a new snapshot is recorded only when an order book event occurs. This concentrates observations on moments of market activity and makes the prediction task structurally easier. We re-evaluate all models under a stricter uniform clock-time regime (250 ms intervals), where quiet stretches are preserved and prediction horizons in seconds correspond to real clock time.
 
 After benchmarking four established architectures under this shared protocol, we propose **Attentive DeepLOB**, which retains DeepLOB's strided convolutional front end and inserts two axial self-attention blocks before the LSTM. The intuition: DeepLOB's local convolutional inductive bias is well-suited to LOB spatial structure, but adding global attention over levels and time can capture dependencies the convolutional path misses.
 
@@ -39,7 +39,7 @@ Input (50 × 40 × 1)
     ↓
 Conv Block 1 — (1×2) stride, 16 ch   [price-volume pairing]
 Conv Block 2 — (1×2) stride, 16 ch   [cross-level aggregation]
-Conv Block 3 — (1×10), 16 ch         [level compression, padding=same]
+Conv Block 3 — (1×10), 16 ch         [level features, padding=same]
 Inception     — 3 parallel branches, 96 ch  [multi-timescale features]
 Conv 1×1      — 32 ch                 [channel reduction]
     ↓
@@ -142,5 +142,5 @@ Training all 15 models (5 architectures × 3 horizons) takes approximately 2–3
 
 ## Authors
 
-Pietro Micara, Martin Bettison, Kaden Davidson, Max Reid  
+Pietro Micara  
 ST456 Deep Learning — MSc Financial Statistics, London School of Economics, 2025–26
