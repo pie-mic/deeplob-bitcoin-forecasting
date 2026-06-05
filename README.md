@@ -106,12 +106,6 @@ The raw data cannot be redistributed. See `data/README.md` for instructions on s
 ├── requirements.txt
 ├── data/
 │   └── README.md              # Dataset description and sourcing instructions
-├── figures/                   # Key plots exported from the paper
-│   ├── results_accuracy_f1.png
-│   ├── confusion_matrices.png
-│   ├── training_curves.png
-│   ├── finetuning_results.png
-│   └── axial_attention_maps.png
 └── Deep_LOB_Bitcoin.pdf       # Full paper
 ```
 
